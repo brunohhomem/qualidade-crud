@@ -1,1 +1,19 @@
-Oi
+{
+  "todos": [
+    {
+      "date": "2025-11-07T14:46:03.924Z",
+      "content": "Primeira TODO",
+      "done": false
+    },
+    {
+      "date": "2025-11-07T14:46:03.925Z",
+      "content": "Segunda TODO",
+      "done": false
+    },
+    {
+      "date": "2025-11-07T14:46:03.926Z",
+      "content": "Terceira TODO",
+      "done": false
+    }
+  ]
+}
