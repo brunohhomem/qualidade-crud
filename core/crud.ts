@@ -3,8 +3,10 @@ import { v4 as uuid } from 'uuid'
 
 const DB_FILE_PATH = './core/db'
 
+type UUID = string
+
 interface Todo {
-  id: string
+  id: UUID
   date: string
   content: string
   done: boolean
@@ -40,7 +42,7 @@ function read(): Array<Todo> {
   return db.todos
 }
 
-function update(id: string, partialTodo: Partial<Todo>) {
+function update(id: UUID, partialTodo: Partial<Todo>) {
   let updatedTodo;
 
   const todos = read()
@@ -57,12 +59,25 @@ function update(id: string, partialTodo: Partial<Todo>) {
   fs.writeFileSync(DB_FILE_PATH, JSON.stringify({ todos }, null, 2))
 }
 
-function updateContentById(id: string, content: string) {
+function updateContentById(id: UUID, content: string) {
   return update(
     id, {
     content
   }
   )
+}
+
+function deleteById(id: UUID) {
+  const todos = read()
+
+  const todosWithoutOne = todos.filter((todo) => {
+    if (id === todo.id) {
+      return false
+    }
+    return true
+  })
+
+  fs.writeFileSync(DB_FILE_PATH, JSON.stringify({ todos: todosWithoutOne }, null, 2))
 }
 
 function CLEAR_DB() {
@@ -71,14 +86,16 @@ function CLEAR_DB() {
 
 CLEAR_DB()
 create('Primeira TODO')
-create('Segunda TODO')
-const terceiraTodo = create('Terceira TODO')
 
-update(terceiraTodo.id, {
+const secondTodo = create('Segunda TODO')
+deleteById(secondTodo.id)
+
+const thirdTodo = create('Terceira TODO')
+update(thirdTodo.id, {
   content: "novo content da terceira todo",
   done: true
 })
 
-updateContentById(terceiraTodo.id, 'Atualizando o content novamente')
-console.log(read())
+updateContentById(thirdTodo.id, 'Atualizando o content da terceira, novamente')
 
+console.log(read())
