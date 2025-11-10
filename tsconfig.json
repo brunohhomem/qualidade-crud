@@ -39,7 +39,8 @@
     "next-env.d.ts",
     "**/*.mts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "eslint.config.cjs"
   ],
   "exclude": [
     "node_modules"
