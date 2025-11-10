@@ -29,7 +29,7 @@ export default tseslint.config(
     rules: {
       "no-console": "warn",
       "react/no-unknown-property": ["error", { ignore: ["jsx", "global"] }],
-      "prettier/prettier": "error",
+      "prettier/prettier": "off",
     },
   },
 );
