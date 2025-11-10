@@ -1,5 +1,5 @@
 import React from "react";
-import { GlobalStyles } from "../src/theme/GlobalStyles.js";
+import { GlobalStyles } from "@ui/theme/GlobalStyles.js";
 
 const bg = "/bg.jpeg";
 
